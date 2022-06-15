@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+img{
+  object-fit: cover;
+}
+.major-text {
+  width: 64px;
+  height: 25px;
+  font-size: 16px;
+  font-family: SourceHanSansCN-Bold, SourceHanSansCN;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 24px;
+  background: linear-gradient(to bottom, #3aa9f5 0%, #6becfa 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color:transparent;
+  -webkit-text-fill-color: transparent;
+}
+.unselect-major-text {
+  width: 60px;
+  height: 23px;
+  font-size: 15px;
+  font-family: SourceHanSansCN-Medium, SourceHanSansCN;
+  font-weight: 500;
+  color: #c2c2c2;
+  line-height: 23px;
+}

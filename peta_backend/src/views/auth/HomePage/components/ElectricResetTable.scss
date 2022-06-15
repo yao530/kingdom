@@ -1,0 +1,15 @@
+.table {
+	::deep {
+		th {
+			padding: 2px !important;
+		}
+
+		td {
+			padding: 2px !important;
+		}
+
+		.ant-table-placeholder {
+			padding: 8px;
+		}
+	}
+}

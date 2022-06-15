@@ -1,0 +1,125 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.peta</groupId>
+		<artifactId>peta-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>peta-ipfs</artifactId>
+	<name>peta-ipfs</name>
+	<description> 文件上传服务 </description>
+	<properties>
+		<!-- <maven-jar-plugin.version>3.0</maven-jar-plugin.version> -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<jwt.auth0.version>3.2.0</jwt.auth0.version>
+		<skipTests>true</skipTests>
+	</properties>
+	
+	<repositories>  
+	    <repository>
+	        <id>jitpack.io</id>
+	        <url>https://jitpack.io</url>
+	    </repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
+		<!-- spring-boot-starter-test：测试模块，包括JUnit、Hamcrest、Mockito -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.vaadin.external.google</groupId>
+					<artifactId>android-json</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>org.junit.jupiter</groupId>
+					<artifactId>junit-jupiter-api</artifactId>
+				</exclusion>
+
+			</exclusions>
+		</dependency>
+
+		
+		<!-- 引入Web模块，需添加spring-boot-starter-web模块 包含对外接口的参数验证 必须引入 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	
+	
+		<!-- jsp-tomcat -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency>
+		<!-- tomcat-jasper -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jasper</artifactId>
+			<version>9.0.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.minidev</groupId>
+			<artifactId>json-smart</artifactId>
+			<version>2.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>${jwt.auth0.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.peta</groupId>
+			<artifactId>peta-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.github.ipfs/java-ipfs-http-client -->
+		<dependency>
+			<groupId>com.github.ipfs</groupId>
+			<artifactId>java-ipfs-http-client</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+
+	</dependencies>
+	<packaging>jar</packaging>
+	<build>
+		<finalName>peta</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>

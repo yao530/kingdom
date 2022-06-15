@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.peta</groupId>
+	<artifactId>peta-parent</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<name>peta-parent</name>
+
+	
+	<modules>
+ 	 <module>peta-common</module>
+        <module>peta-api</module>
+        <module>peta-okex</module>
+<!--        <module>peta-ipfs</module>-->
+	</modules>
+
+
+	<!-- spring boot 父节点依赖,引入这个之后相关的引入就不需要添加version配置， spring boot会自动选择最合适的版本进行添加。 -->
+ 	<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.1.RELEASE</version>
+    </parent>
+    <!--<version>2.1.4.RELEASE</version>-->
+	<properties>
+		<maven-jar-plugin.version>2.6</maven-jar-plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <jackson-databind-version>2.11.1</jackson-databind-version>
+        <weixin-java-mp.version>3.4.0</weixin-java-mp.version>
+	</properties>
+	
+   <dependencies>
+
+    	<!-- 开发阶段生成get set方法用到 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+   	    <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+              <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+             <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson-databind-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson-databind-version}</version>
+        </dependency>
+
+  			<!-- 添加Spring-data-jpa依赖. 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>-->
+     		<!-- durid连接池
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>1.1.5</version>
+		</dependency>
+			 配置项直接生成对象依赖
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency> -->
+		<!-- 添加MySQL数据库驱动依赖包. -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.5</version>
+        </dependency>
+        <dependency>
+          <groupId>org.dom4j</groupId>
+          <artifactId>dom4j</artifactId>
+          <version>2.1.3</version>
+          <scope>compile</scope>
+          <exclusions>
+            <exclusion>
+              <artifactId>*</artifactId>
+              <groupId>*</groupId>
+            </exclusion>
+          </exclusions>
+        </dependency>
+       <dependency>
+           <groupId>org.apache.poi</groupId>
+           <artifactId>poi-ooxml</artifactId>
+           <version>4.1.2</version>
+       </dependency>
+       <dependency>
+           <groupId>xerces</groupId>
+           <artifactId>xercesImpl</artifactId>
+           <version>2.12.0</version>
+       </dependency>
+
+       <!-- 添加MongoDB支持
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-data-mongodb</artifactId>
+       </dependency> -->
+
+       <!-- 添加ActiveMQ支持 -->
+       <!--<dependency>-->
+           <!--<groupId>org.springframework.boot</groupId>-->
+           <!--<artifactId>spring-boot-starter-activemq</artifactId>-->
+       <!--</dependency>-->
+
+       <!-- 添加阿里云SDK支持 -->
+       <dependency>
+           <groupId>com.aliyun</groupId>
+           <artifactId>aliyun-java-sdk-core</artifactId>
+           <version>4.5.3</version>
+       </dependency>
+
+       <!--aliyun-oss-->
+       <dependency>
+           <groupId>com.aliyun.oss</groupId>
+           <artifactId>aliyun-sdk-oss</artifactId>
+           <version>3.10.2</version>
+       </dependency>
+       
+       	<!-- 微信 weixin-java-miniapp是api库 weixin-java-mp是工具库 -->
+		<dependency>
+			<groupId>com.github.binarywang</groupId>
+			<artifactId>weixin-java-miniapp</artifactId>
+			<version>${weixin-java-mp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.binarywang</groupId>
+			<artifactId>weixin-java-mp</artifactId>
+			<version>${weixin-java-mp.version}</version>
+		</dependency>
+
+
+
+   </dependencies>
+   
+   
+   <!-- 设定远程主仓库，按设定顺序进行查找。 -->
+    <repositories>
+    
+        <!-- 如有Nexus私服, 取消注释并指向正确的服务器地址.
+        <repository>
+            <id>nexus-repos</id>
+            <name>Team Nexus Repository</name>
+            <url>http://192.168.11.36:8888/nexus/content/groups/public</url>
+        </repository> -->
+
+        <repository>
+            <id>oschina-repos</id>
+            <name>Oschina Releases</name>
+            <url>http://maven.oschina.net/content/groups/public</url>
+        </repository>
+        
+        <repository>
+            <id>aliyun-repos</id>
+            <name>aliyun Releases</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+
+        <repository>
+            <id>java-repos</id>
+            <name>Java Repository</name>
+            <url>https://maven.java.net/content/repositories/public/</url>
+        </repository>
+        
+        <repository>
+            <id>JBoss-repos</id>
+            <name>JBoss Repository</name>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+
+        <repository>
+            <id>springsource-repos</id>
+            <name>SpringSource Repository</name>
+            <url>http://repo.spring.io/release/</url>
+        </repository>
+        
+        <repository>
+            <id>central-repos</id>
+            <name>Central Repository</name>
+            <url>http://repo.maven.apache.org/maven2</url>
+        </repository>
+        
+        <repository>
+            <id>central-repos2</id>
+            <name>Central Repository 2</name>
+            <url>http://repo1.maven.org/maven2/</url>
+        </repository>
+        
+        <repository>
+            <id>activiti-repos</id>
+            <name>Activiti Repository</name>
+            <url>https://maven.alfresco.com/nexus/content/groups/public</url>
+        </repository>
+        
+        <repository>
+            <id>activiti-repos2</id>
+            <name>Activiti Repository 2</name>
+            <url>https://app.camunda.com/nexus/content/groups/public</url>
+        </repository>
+        
+        <repository> 
+            <id>easonjim-repos</id> 
+            <name>EasonJim Repository</name>
+            <url>https://raw.github.com/easonjim/repository/master</url>
+        </repository>
+        
+    </repositories>
+  <!-- 打包用   com.tencentcloudapi:  -->
+<build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+   <!--       不加这个一直提示缺少XML文件 真是坑 -->
+        <!--  <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>  -->
+        <!--     资源文件拷贝插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>  
+       
+        <!--      单元测试插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+			   <!--    不指定单元测试 -->
+			      <skipTests>true</skipTests>
+			   </configuration>
+            </plugin>
+        </plugins>
+  <!--        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins> -->
+    </build>
+
+
+</project>

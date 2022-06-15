@@ -1,0 +1,59 @@
+###################  服务器端口  ###################
+server:
+  port: 9906
+  servlet:
+    context-path: /ipfs/
+    
+spring:  
+  profiles:
+    active: dev  #打包时只需更改这文件名就可以了
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver   
+  jpa:
+    database: mysql
+    generate-ddl: false #自动生成表
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  mvc:
+    converters:
+      preferred-json-mapper: jackson
+  jackson:
+    time-zone: 'GMT+8'
+    serialization:
+      indent-output: true  #格式化输出
+      write-dates-as-timestamps: false
+    date-format: yyyy-MM-dd HH:mm:ss
+    
+  devtools:
+    restart:
+      enabled: false
+  aop:
+    proxy-target-class: true
+    auto: true
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 1024MB
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:static/
+logging:
+  config: classpath:log4j2-dev.xml       
+      
+###################  mybatis-plus配置  ###################
+
+mybatis-plus: 
+  mapper-locations:  classpath*:mapper/*/*Mapper.xml     #这个是你定义的mapping文件，支持通配符，如果有多个用逗号隔开
+  typeAliasesPackage: com.ltu.domain.mp_entity          #这个定义实体类所在的包名，或者其他能使用别名的类所在的包
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true #配置的缓存的全局开关
+    lazyLoadingEnabled: true #延时加载的开关
+    multipleResultSetsEnabled: false #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl 
+    
+
+
+

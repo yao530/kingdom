@@ -1,0 +1,24 @@
+要修改4个地方才能彻底取消token过期：
+	1、JWTShiroRealm 76行， 从动态获取salt改成获取静态salt   (验证会用到)
+	2、JwtAuthFilter  onLoginSuccess方法：取消自动续期功能， 106行，取消验证token是否过期
+	2-1、JwtUtils    sign方法的 withExpiresAt 写入null
+	3、ShiroUserService 增加如下代码
+		private final static String TEMP_SALT="d43096b36c73df326d2ded9ccdd3cf00";//不缓存盐值，保证token永久有效
+			/**
+			 * 特殊需求，盐值不过期，tokey永久有效，正常情况使用 generateJwtToken 方法 2021-12-09
+			 * @param jwtUserKey
+			 * @return
+			 */
+			public String generateJwtToken2(String jwtUserKey) {
+				String newToken = JwtUtils.sign(jwtUserKey, TEMP_SALT, CommonConstant.DEFAULT_LOGIN_EXPIRE_TIME);
+				return  newToken;
+			}
+			/**
+			 * 获取加盐值
+			 * @param username
+			 * @return
+			 */
+			public String getSalt(){
+				return TEMP_SALT;
+			}
+	4、ShiroUserService	第57行改成这个 return generateJwtToken2(user.getJwtUserKey()); //不需要过期用这个

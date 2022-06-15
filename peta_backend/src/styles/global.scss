@@ -1,0 +1,18 @@
+$header-height: 64px;
+$footer-height: 70px;
+
+.global_page_header {
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 20px;
+
+	.place {
+		flex: 1;
+	}
+}
+
+body {
+	.margin_l_20 {
+		margin-left: 20px;
+	}
+}

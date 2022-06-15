@@ -1,0 +1,89 @@
+###################  服务器端口  ###################
+server:
+  port: 8903
+  servlet:
+    context-path: /api/
+    
+spring:  
+  profiles:
+    active: dev  #打包时只需更改这文件名就可以了
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver   
+  jpa:
+    database: mysql
+    generate-ddl: false #自动生成表
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  mvc:
+    converters:
+      preferred-json-mapper: jackson
+  jackson:
+    time-zone: 'GMT+8'
+    serialization:
+      indent-output: true  #格式化输出
+      write-dates-as-timestamps: false
+    date-format: yyyy-MM-dd HH:mm:ss
+logging:
+  config: classpath:log4j2-dev.xml 
+  devtools:
+    restart:
+      enabled: false
+  aop:
+    proxy-target-class: true
+    auto: true
+
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+  jms: #消息模式 true:广播(Topic)，false:队列(Queue),默认时false
+    pub-sub-domain: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 500MB
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${upload.file-path}
+
+###################  netty服务端口  ###################
+netty-port: 9988        
+      
+###################  mybatis-plus配置  ###################
+
+mybatis-plus: 
+  mapper-locations:  classpath*:mapper/*/*Mapper.xml     #这个是你定义的mapping文件，支持通配符，如果有多个用逗号隔开
+  typeAliasesPackage: com.ltu.domain.mp_entity          #这个定义实体类所在的包名，或者其他能使用别名的类所在的包
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true #配置的缓存的全局开关
+    lazyLoadingEnabled: true #延时加载的开关
+    multipleResultSetsEnabled: false #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl 
+    
+###################  微信api配置  ###################
+wx:
+  miniapp:
+    appid: wxd80592dba1370628
+    secret: 97347e69fb7c0f3993634a1086e895e4
+    configs:
+      - appid: wxd80592dba1370628
+        secret: 97347e69fb7c0f3993634a1086e895e4
+        token: barreledWater
+        aesKey: NJMqx2w5SKgTNMSwhMGPW33fpKGgi4U6PEDcsD1Wg2y
+        msgDataFormat: JSON
+###################  腾讯文件存储COS配置  ###################
+qcloud:   
+  appid: 1400590027
+  appkey: c5e63fc534900b7ece74808a3aa0baaf
+tencent.cloud:
+  SecretId: AKID97pLbaIjtmSrzqPimZ5LK2TdW8TWJp42 
+  SecretKey: jBMFsDH4apnVv4wXrwlJaaKL5YkfIern
+
+
+
+
+
+
+

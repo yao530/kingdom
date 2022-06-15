@@ -1,0 +1,194 @@
+@import './variables.scss';
+@import './mixin.scss';
+
+html,
+body .app {
+  color: #333333;
+  font-family: Arial, Helvetica, 'STHeiti STXihei', 'Microsoft YaHei', Tohoma, sans-serif;
+  background-color: $background-color;
+ 
+}
+
+.app-container {
+  padding-bottom: 50px;
+}
+.main-backbound{
+  background: #141416
+}
+.pad-10{
+  padding: 10px;
+}
+.pad-12{
+  padding: 12px;
+}
+.padding-left-12{
+  padding-left: 12px;
+}
+.pad-15{
+  padding: 15px;
+}
+.pad-20{
+  padding: 20px;
+}
+.padding-top-15{
+  padding-top: 15px;
+}
+.padding-bottom-15{
+  padding-bottom: 15px;
+}
+.margin-top-5{
+  margin-top: 5px;
+}
+.margin-top-10{
+  margin-top: 10px;
+}
+.margin-top-15{
+  margin-top: 15px;
+}
+.margin-top-20{
+  margin-top: 20px;
+}
+.margin-left-5{
+  margin-left: 5px
+}
+.margin-left-12{
+  margin-left: 12px
+}
+.margin-left-10{
+  margin-left: 10px
+}
+.margin-left-15{
+  margin-left: 15px
+}
+.margin-left-20{
+  margin-left: 20px
+}
+.margin-left-25{
+  margin-left: 25px
+}
+.margin-top-30{
+  margin-top: 30;
+}
+.margin-top-40{
+  margin-top: 40px;
+}
+.margin-top-50{
+  margin-top: 50%;
+}
+.margin-right-10{
+  margin-right: 10px;
+}
+.margin-right-15{
+  margin-right: 15px;
+}
+.width100{
+  width: 100%;
+}
+
+
+.marjor-title-color{
+  color:  linear-gradient(180deg, #3AA9F5 0%, #6BECFA 100%);
+}
+
+.flex-row{
+  display: flex !important;
+  flex-direction: row !important;
+}
+.flex-column{
+  display: flex !important;
+  flex-direction: column !important;
+}
+.center{
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+.right{
+  display: flex !important;
+  justify-content: right;
+  align-items: center;
+}
+.x-center{
+  display: flex !important;
+  justify-content: center;
+}
+.y-center{
+  display: flex !important;
+  align-items: center;
+}
+
+//********** 颜色标题样式/
+.white{
+  color: #FFFFFF
+}
+.light-gray{
+  color: #C2C2C2
+}
+.mid-gray{
+  color: #CCCCCC 
+}
+.light-blue{
+  color: #3CABF5;
+}
+.main-color{
+  color: #6BECFA;
+}
+.light-gold{
+  color: #E9E4C3;
+}
+.light-gray-99{
+  color: #999999
+}
+
+.font-color-ef{
+  color: #EFEFEF;
+}
+.suscess-status{
+  color: #86D038;
+}
+.cancel-status{
+  color: #999999;
+}
+.wait-status{
+  color: #E6920F;
+}
+.warn-status{
+  color: red
+}
+
+
+//********** 字体标题样式/
+.font-size-12{
+  font-size: 12px;
+}
+.font-size-13{
+  font-size: 13px;
+}
+.font-size-14{
+  font-size: 14px;
+}
+.font-size-15{
+  font-size: 15px;
+}
+.font-size-16{
+  font-size: 16px;
+}
+.font-size-18{
+  font-size: 18px;
+}
+
+.font-weight-500{
+  font-weight: 500;
+}
+
+
+
+
+
+.text-overflow-2{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
